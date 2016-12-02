@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="2018 JLR XCL VIP" default="Build for MY18-L560" basedir=".">
+  <property name="BuildL560" value="Building MY18 JLR L560 variant"/>
+  <property name="CleanL560" value="Cleaning L560 variant build files"/>
+  <property name="BuildX590" value="Building MY18 JLR X590 variant"/>
+  <property name="CleanX590" value="Cleaning X590 variant build files"/>
+  <property name="Run_QAC_ALL" value="Running QAC for whole workspace."/>
+  <property name="Run_QAC_FILE" value="Running QAC for a file."/>
+  <property name="Run_QAC_Component" value="Running QAC for a component."/>
+  <property name="Run_QAC_Required" value="Running QAC, only for the required files."/>
+  <property name="Clean_QAC" value="Cleaning existing QAC static analysis reports."/>
+  
+  <!-- Build JLR MY18 L560 variant --> 
+  <target name="Build for MY18-L560">
+    <echo>${BuildL560}</echo>
+    <exec dir="." executable="cmd" os="Windows 7">
+      <arg line="/c build_L560_my18.cmd"/>
+    </exec>
+  </target>
+  
+  <!-- Clean JLR MY18 L560 execuatables -->
+  <target name="Clean the MY18-L560 build">
+    <echo>${CleanL560}</echo>
+    <exec dir="." executable="cmd" os="Windows 7">
+      <arg line="/c build_L560_my18.cmd clean"/>
+    </exec>
+  </target>
+  
+  <!-- Build JLR MY18 L560 variant --> 
+  <target name="Build for MY18-X590">
+    <echo>${BuildX590}</echo>
+    <exec dir="." executable="cmd" os="Windows 7">
+      <arg line="/c build_x590_my18.cmd"/>
+    </exec>
+  </target>
+  
+  <!-- Clean JLR MY18 L560 execuatables -->
+  <target name="Clean the MY18-X590 build">
+    <echo>${CleanX590}</echo>
+    <exec dir="." executable="cmd" os="Windows 7">
+      <arg line="/c build_x590_my18.cmd clean"/>
+    </exec>
+  </target>
+
+  <!-- Debug copy for L560 --> 
+  <target name="Debug_Copy_L560">
+    <exec dir="." executable="cmd" os="Windows 7">
+      <arg line="/c build_L560_my18.cmd debug_copy"/>
+    </exec>
+  </target>
+  
+    <!-- Debug copy for X590 --> 
+  <target name="Debug_Copy_X590">
+    <exec dir="." executable="cmd" os="Windows 7">
+      <arg line="/c build_x590_my18.cmd debug_copy"/>
+    </exec>
+  </target> 
+  
+  <!-- Run QAC for whole workspace -->
+  <target name="Run QAC for whole workspace">
+    <echo>${Run_QAC_ALL}</echo>
+    <exec dir="." executable="cmd" os="Windows 7">
+      <arg line="/c run_qac.cmd ALL"/>
+    </exec>
+  </target>
+  
+  <!-- Run QAC only for the rquired files -->
+  <target name="Run QAC for the required files">
+    <echo>${Run_QAC_Required}</echo>
+    <exec dir="." executable="cmd" os="Windows 7">
+      <arg line="/c run_qac.cmd ..\..\..\..\di.jlr.powermgr"/>
+    </exec>
+  </target>
+</project>
